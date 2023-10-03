@@ -1,20 +1,22 @@
-// script.js
+// Get the display element
+const display = document.getElementById('display')
 
-document.addEventListener('DOMContentLoaded', function () {
-	const scrollRight = document.getElementById('scrollRight')
-	const productListContainer = document.querySelector(
-		'.product-list-container'
-	)
+// Function to append clicked button value to the display
+function appendToDisplay(value) {
+	display.value += value
+}
 
-	console.log('Initial Scroll Left:', productListContainer.scrollLeft)
+// Function to calculate the result of the expression
+function calculate() {
+	try {
+		const result = eval(display.value)
+		display.value = result
+	} catch (error) {
+		display.value = 'Error'
+	}
+}
 
-	scrollRight.addEventListener('click', function () {
-		console.log('Clicked!')
-		productListContainer.scrollBy({
-			top: 0,
-			left: 620,
-			behavior: 'smooth',
-		})
-		console.log('Scroll Left After:', productListContainer.scrollLeft)
-	})
-})
+// Function to clear the display
+function clearDisplay() {
+	display.value = ''
+}
